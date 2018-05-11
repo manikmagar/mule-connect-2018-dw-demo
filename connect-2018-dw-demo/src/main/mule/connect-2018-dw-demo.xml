@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="766cf754-4241-4978-bf7f-70738a78cd30" >
+		<http:request-connection host="httpbin.org" port="80" />
+	</http:request-config>
+	<flow name="connect-2018-dw-script" doc:id="925d46e3-7ca3-46e7-9af0-eb949abed4ba" >
+		<set-payload value="#[[{'name': &quot;Manik&quot;,'lastname': &quot;Magar&quot;}]]" doc:name="Set Payload" doc:id="b766fc9b-98de-4c89-930d-0b1b002aa4e4" mimeType="application/json"/>
+		<ee:transform doc:name="Transform Message" doc:id="d10e1fc0-acc4-47bd-86c5-30f68644b98d" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+import * from dw::core::Arrays
+var myVar=13.15
+fun toUser(obj) = {
+  firstName: obj.field1,
+  lastName: obj.field2
+}
+type Currency = String {format: "##"}
+ns msg http://www.mulesoft.com/anypoint/SOA/message/v1.0
+output application/json
+---
+payload reduce ((obj, val = []) -> 
+	val + (obj.name ++ ' ' ++ obj.lastname)
+)]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="connect-2018-dw-demo-datasense-httpbin" doc:id="d94b7ab2-b585-4572-a1ed-10d58afa9d37" >
+		<http:request method="GET" doc:name="Request" doc:id="9248b5b2-70a7-486a-a859-053fe44a2886" config-ref="HTTP_Request_configuration" path="/get"/>
+		<ee:transform doc:name="Transform Message" doc:id="cdf49b6b-5f15-45d1-8e17-621d689154d1" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	 
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<http:request method="POST" doc:name="Request" doc:id="fea1e22b-e7cd-49e0-a92e-fe6160e54108" config-ref="HTTP_Request_configuration" path="/post"/>
+	</flow>
+	<flow name="connect-2018-dw-datasense" doc:id="f5939a48-9adb-465b-9d5c-13f8beef867f" >
+		<set-payload value='#[[{"id": 1, "type": "game"},{"id": 2, "type": "movie"},{"id": 1, "type": "book"}]]' doc:name="Set Payload" doc:id="cee46a6f-7d8f-4266-b460-f86d213f7f9e" mimeType="application/json"/>
+		<ee:transform doc:name="Transform Message" doc:id="2cca2979-e55b-4124-b792-d113aa43cd41" >
+			<ee:message >
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/java
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="2d93f981-4ffc-4bf6-86af-5e1b84dfc830" />
+	</flow>
+	<flow name="connect-2018-dw-create-metadata" doc:id="ad417ba6-e2d6-492e-9773-9ca0d259e904" >
+		<ee:transform doc:name="Transform Message" doc:id="4a7df47e-55e6-454f-bcf1-bdb3af02da9d" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="connect-2018-dw-demo-modules-java-interop" doc:id="922a3a34-317f-4823-9c33-da7aa57d8a31" >
+		<ee:transform doc:name="Transform Message" doc:id="30c9d6ca-bc0e-4d7e-8bc1-b0d468181ece" >
+			<ee:message >
+				<ee:set-payload resource="dw/demo-modules.dwl"/>
+			</ee:message>
+		</ee:transform>
+	</flow>
+
+	<flow name="connect-2018-dw-demo-invoice-transformation-1" doc:id="ce766cf0-93ae-4b5d-a4a3-64493cf8d11f" >
+		<ee:transform doc:name="Transform Message" doc:id="6dbef769-0996-42b1-ad05-0846e45811fc" >
+			<ee:message >
+				<ee:set-payload resource="dw/invoice-to-json-1.dwl"/>
+			</ee:message>
+		</ee:transform>
+	</flow>
+
+	<flow name="connect-2018-dw-demo-orders-transformation" doc:id="7f887310-c986-4721-9318-104c17b2cc99" >
+		<ee:transform doc:name="Transform Message" doc:id="e04b57bd-fa5e-4834-b7a8-7fd6eee6a598" >
+			<ee:message >
+				<ee:set-payload resource="dw/demo-orders-to-json.dwl"/>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	
+	<flow name="connect-2018-dw-demo-invoice-transformation-2" doc:id="ce766cf0-93ae-4b5d-a4a3-64493cf8d11f" >
+		<ee:transform doc:name="Transform Message" doc:id="6dbef769-0996-42b1-ad05-0846e45811fc" >
+			<ee:message >
+				<ee:set-payload resource="dw/invoice-to-json-2.dwl"/>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

@@ -1,0 +1,12 @@
+Email,First Name,Last Name,City,Country,Current Employer,Currently Employed,Education,Years of Experience,Fax,Mobile,Phone,SSN,State/Province,Street,US Citizen,Visa Required,Zip/Postal Code
+paul@revere.com,Paul,Revere,Boston,USA,City of Boston,TRUE,HS Diploma,6,510-555-5555,510-555-5555,510-333-3333,123456789,MA,111 Montclair St,FALSE,TRUE,21111
+george@schnell.com,George,Schnell,Miami,USA,Seaworld,TRUE,Ph.D.,3,510-555-5555,510-555-5555,619-555-5555,987654321,FL,1 Herald Plaza,FALSE,TRUE,33132-1693
+mary@jane.com,Mary,Jane,Boise,USA,City of Boise,TRUE,BA/BS,3,510-555-5555,510-555-5555,510-333-3333,111222333,Idaho,1530 Main St.,FALSE,TRUE,11111
+bill@george.com,Bill,George,Princeton,USA,Princeton University,FALSE,HS Diploma,4,510-555-5555,510-555-5555,510-333-3333,444555666,NJ,235 Montgomery St,FALSE,TRUE,11111
+amy@johnson.com,Amy,Johnson,Chula Vista,USA,Seaworld,TRUE,BA/BS,3,510-555-5555,510-555-5555,619-555-5555,777888999,CA,4450 Main St.,TRUE,FALSE,91911
+dcarroll@merce.com,Dave,Carroll,Redwood City,USA,Oracle,TRUE,Post Doc,7,510-555-5555,510-555-5555,(650) 650-6506,999888777,CA,136 Brecon Court,TRUE,FALSE,94062
+ntran@ntran.com,Nick,Tran,New York,USA,Salesforce.com,TRUE,BA/BS,8,510-555-5555,510-555-5555,(650) 650-6506,666555444,NY,1280 Lexington,TRUE,FALSE,10028
+bonnie@existnet.com,Bonnie,Rutherford,La Mesa,USA,Balance US,TRUE,MA/MS/MBA,15,510-555-5555,510-555-5555,(510) 555-5555,333222111,CA,7559 University Ave,TRUE,FALSE,91941
+ethan@tran.com,Ethan,Tran,Berkeley,USA,IBM,TRUE,BA/BS,10,510-555-5555,510-555-5555,510-555-5555,555555555,CA,2000 Hearst Ave,TRUE,FALSE,94709
+agerard@mailnow.com,Anne,Gerard,Buffalo,USA,Gateway,TRUE,Ph.D.,5,510-555-5555,510-555-5555,(510) 555-5555,333333333,NY,3168 Broadway #245,TRUE,FALSE,89666
+claudie@remark.com,Claudia,Hawthorne,Huntington Woods,USA,EDS,TRUE,BA/BS,12,510-555-5555,510-555-5555,(510) 555-5555,111111111,MI,4123 Lincoln Ave.,TRUE,FALSE,48091

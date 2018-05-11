@@ -1,0 +1,157 @@
+{
+  "supplier": [
+    "dchen@ariba.com"
+  ],
+  "buyer": [
+    "bigadmin@marketplace.org",
+    "admin@acme.com"
+  ],
+  "invoiceId": "123456",
+  "invoiceDate": "04/20/2001 23:59 -07:00",
+  "buyer": [
+    {
+      "name": "Mike Smith",
+      "address": "Mike Smith,15 Camino del Cerro,Los Gatos,CA,95032,United States",
+      "email": "admin@ariba.com",
+      "phone": [
+        {
+          "type": "work",
+          "number": "+14083582000"
+        }
+      ],
+      "fax": [
+        {
+          "type": "work",
+          "number": "+14083582100"
+        }
+      ]
+    }
+  ],
+  "PhoneNumber": "+14083582000",
+  "payee": [
+    {
+      "name": "Lisa King",
+      "address": "Lisa King,16 Castro Street,Mountain View,CA,95035,United States",
+      "email": "lking@supplierbank.com",
+      "phone": [
+        {
+          "type": "work",
+          "number": "+16509990000"
+        }
+      ],
+      "fax": null
+    }
+  ],
+  "payeeBank": [
+    {
+      "identifier": "00000-11111",
+      "domain": "accountReceivableID"
+    },
+    {
+      "identifier": "123456789",
+      "domain": "bankRoutingID"
+    }
+  ],
+  "orderItems": [
+    {
+      "itemId": "TEX08134",
+      "description": "Texas Instruments Superview Calculator - Heavy-Duty 12-Digit Print/Display",
+      "quantity": 30,
+      "uom": "EA",
+      "price": {
+        "currency": "USD",
+        "amount": 130
+      },
+      "subtotal": {
+        "currency": "USD",
+        "amount": 3900
+      },
+      "taxData": [
+        {
+          "purpose": "tax",
+          "category": "State sales tax",
+          "taxable": {
+            "currency": "USD",
+            "amount": 3900
+          },
+          "tax": {
+            "currency": "USD",
+            "amount": 312
+          },
+          "taxLocation": "CA"
+        },
+        {
+          "purpose": "tax",
+          "category": "Federal sales tax",
+          "taxable": {
+            "currency": "USD",
+            "amount": 3900
+          },
+          "tax": {
+            "currency": "USD",
+            "amount": 78
+          },
+          "taxLocation": ""
+        }
+      ],
+      "grossAmount": {
+        "currency": "USD",
+        "amount": 4310
+      },
+      "netAmount": {
+        "currency": "USD",
+        "amount": 4310
+      }
+    },
+    {
+      "itemId": "3244322",
+      "description": "Dell Mousepad",
+      "quantity": 50,
+      "uom": "EA",
+      "price": {
+        "currency": "USD",
+        "amount": 20
+      },
+      "subtotal": {
+        "currency": "USD",
+        "amount": 1000
+      },
+      "taxData": [
+        {
+          "purpose": "tax",
+          "category": "State sales tax",
+          "taxable": {
+            "currency": "USD",
+            "amount": 1000
+          },
+          "tax": {
+            "currency": "USD",
+            "amount": 80
+          },
+          "taxLocation": "CA"
+        },
+        {
+          "purpose": "tax",
+          "category": "Federal sales tax",
+          "taxable": {
+            "currency": "USD",
+            "amount": 1000
+          },
+          "tax": {
+            "currency": "USD",
+            "amount": 20
+          },
+          "taxLocation": ""
+        }
+      ],
+      "grossAmount": {
+        "currency": "USD",
+        "amount": 1110
+      },
+      "netAmount": {
+        "currency": "USD",
+        "amount": 1110
+      }
+    }
+  ]
+}

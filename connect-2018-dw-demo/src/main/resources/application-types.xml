@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="InvoiceDetails" format="xml">
+      <types:example format="xml" element="cXML" location="examples/InvoiceDetailRequest.xml"/>
+    </types:type>
+    <types:type name="candidates" format="csv">
+      <types:shape format="weave" example="examples/Candidates.csv"><![CDATA[type candidates = Array<{|
+  Email?: String, 
+  "First Name"?: String, 
+  "Last Name"?: String, 
+  City?: String, 
+  Country?: String, 
+  "Current Employer"?: String, 
+  "Currently Employed"?: String, 
+  Education?: String, 
+  "Years of Experience"?: Number, 
+  Fax?: String, 
+  Mobile?: String, 
+  Phone?: String, 
+  SSN?: String, 
+  "State/Province"?: String, 
+  Street?: String, 
+  "US Citizen"?: String, 
+  "Visa Required"?: String, 
+  "Zip/Postal Code"?: String
+|}> {"MetadataFormat": "csv"}]]></types:shape>
+      <types:properties>
+        <types:property name="headerLineNumber" value="0"/>
+        <types:property name="header" value="true"/>
+        <types:property name="isQuotedString" value="false"/>
+        <types:property name="separator" value=","/>
+      </types:properties>
+    </types:type>
+    <types:type name="EmployeeObject" format="java">
+      <types:shape format="raml"><![CDATA[#%RAML 1.0 DataType
+type: string]]></types:shape>
+    </types:type>
+    <types:type name="OrderRequest" format="xml">
+      <types:example format="xml" element="cXML" location="examples/0-OrderRequest.xml"/>
+    </types:type>
+    <types:type name="OrderRequestXML" format="xml">
+      <types:example format="xml" element="cXML" location="examples/OrderRequest.xml"/>
+    </types:type>
+    <types:type name="category_db" format="java">
+      <types:shape format="java" element="com.mulesoft.connect.demo.dw.Category"/>
+    </types:type>
+    <types:type name="InvoiceDetails2" format="java">
+      <types:shape format="raml"><![CDATA[#%RAML 1.0 DataType
+type: string]]></types:shape>
+    </types:type>
+    <types:type name="InvoiceJson" format="json">
+      <types:example format="json" location="examples/InvoiceDetails_1.json"/>
+    </types:type>
+    <types:type name="httpbin-get-1" format="json">
+      <types:example format="json" location="examples/httpbin-get.json"/>
+    </types:type>
+    <types:type name="httpbin-post-1" format="json">
+      <types:example format="json" location="examples/httpbin-post.json"/>
+    </types:type>
+    <types:type name="http-bin" format="json">
+      <types:example format="json" location="examples/httpbin-get.json"/>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#7c88593c-2454-4382-872b-7fa75b914b20">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="candidates"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#6dbef769-0996-42b1-ad05-0846e45811fc">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="InvoiceDetails"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#cc99ab68-32a0-4055-b510-9f0cbf8ef287">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="InvoiceDetails"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#e04b57bd-fa5e-4834-b7a8-7fd6eee6a598">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="OrderRequestXML"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#2d93f981-4ffc-4bf6-86af-5e1b84dfc830">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="category_db[]"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#4a7df47e-55e6-454f-bcf1-bdb3af02da9d">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="InvoiceDetails"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="InvoiceJson"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#fea1e22b-e7cd-49e0-a92e-fe6160e54108">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="httpbin-post-1"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#9248b5b2-70a7-486a-a859-053fe44a2886">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="http-bin"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
